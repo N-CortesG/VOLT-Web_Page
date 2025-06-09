@@ -301,12 +301,12 @@ const es = {
       {
         question: '¿Cuánto puedo ahorrar con energía solar?',
         answer:
-          'El ahorro depende de tu consumo actual, ubicación y tipo de instalación. Sin embargo, nuestros clientes típicamente reducen su factura de energía entre un 50% y 90%. En muchos casos, la inversión se recupera entre 3 y 5 años, generando un retorno positivo durante más de 20 años. Además, te proteges frente al alza constante de las tarifas eléctricas.',
+          'El ahorro depende de tu consumo actual, ubicación y tipo de instalación. Sin embargo, nuestros clientes normalmente reducen su factura de energía entre un 80% y 100%. En muchos casos, la inversión se recupera entre 3 y 5 años, un retorno pronto, lo cual garantiza un ahorro durante los 20 años siguientes que es el tiempo estimado de vida útil de los módulos fotovoltaicos. Además proteges tu bolsillo frente al alza constante de las tarifas eléctricas.',
       },
       {
         question: '¿Qué beneficios legales y financieros obtengo?',
         answer:
-          'En Colombia, la instalación de sistemas solares te permite acceder a incentivos como: deducción del 50% del valor de la inversión en renta durante 5 años, exención de IVA en componentes del sistema, depreciación acelerada de activos, y prioridad en trámites ambientales. También puedes generar ingresos vendiendo excedentes de energía a la red (Net Metering).',
+          'En Colombia, la instalación de sistemas solares te permite acceder a incentivos como: deducción hasta del 50% del valor de la inversión en renta durante 5 años, exención de IVA en componentes del sistema, depreciación acelerada de activos, y prioridad en trámites ambientales. También puedes generar ingresos vendiendo excedentes de energía a la red (Net Metering).',
       },
       {
         question: '¿Funciona el sistema solar cuando está nublado o de noche?',
@@ -321,7 +321,7 @@ const es = {
       {
         question: '¿Puedo monitorear mi sistema solar en tiempo real?',
         answer:
-          'Sí. Todos nuestros sistemas incluyen monitoreo en línea desde tu celular o computador. Podrás ver en tiempo real cuánto estás generando, cuánto estás consumiendo y tu ahorro acumulado, lo que te da control total de tu energía.',
+          'Sí. Todos nuestros sistemas incluyen monitoreo en línea desde tu celular o computador. Podrás ver en tiempo real cuánto estás generando, cuánto estás consumiendo y tu ahorro acumulado, lo que te da control total de tu energía por: SSFV o Sistema Solar Fotovoltaico.',
       },
       {
         question: '¿Qué pasa si me mudo o vendo mi casa?',
@@ -331,7 +331,7 @@ const es = {
       {
         question: '¿Cuánto tiempo toma la instalación completa?',
         answer:
-          'Desde el diseño hasta la puesta en marcha, el proceso suele tardar entre 5 y 15 días hábiles, dependiendo del tipo de instalación. En VOLT Solar Energy acompañamos cada paso: diagnóstico, diseño, legalización ante UPME, instalación y monitoreo.',
+          'Entre 5 y 20 días hábiles para sistemas residenciales, en el caso de sistemas comerciales o industriales varía de acuerdo a la capacidad a instalar. Legalización, tramites de registro ante la UPME, instalación, monitoreo y mantenimiento de los SSFV.',
       },
     ],
   },
@@ -444,6 +444,55 @@ const es = {
         text: 'Esta política entra en vigencia a partir de su publicación y puede ser modificada sin previo aviso. Las actualizaciones estarán disponibles en esta misma página.',
       },
     ],
+  },
+
+  // 🔽 Sección Calculadora
+  calculator: {
+    title: 'Calculadora Solar Inteligente',
+    subtitle: 'Estima el consumo, la potencia y el número de paneles',
+    form: {
+      client: 'Nombre del cliente',
+      email: 'Correo electrónico del cliente',
+      location: 'Ubicación',
+      quotedBy: 'Cotizado por',
+      provider: 'Proveedor de energía',
+      months: [
+        'Mes 1 (kWh)',
+        'Mes 2 (kWh)',
+        'Mes 3 (kWh)',
+        'Mes 4 (kWh)',
+        'Mes 5 (kWh)',
+        'Mes 6 (kWh)',
+      ],
+      secondAccount: '¿Deseas añadir una segunda cuenta?',
+      secondConsumption: 'Consumo adicional para aplicar (kWh)',
+      efficiency: 'Eficiencia del sistema (0.8 = 80%)',
+      sunHours: 'Horas de sol por día',
+      panelPower: 'Potencia del panel (W)',
+      results: {
+        title: 'Resultados de cálculo',
+        avgUsage: 'Consumo mensual promedio',
+        requiredPanels: 'Cantidad de paneles requeridos',
+        totalPower: 'Potencia instalada total',
+      },
+      summary: {
+        title: 'Resumen de la cotización',
+        client: 'Cliente',
+        location: 'Ubicación',
+        avg: 'Consumo mensual promedio',
+        power: 'Potencia instalada',
+        panels: 'Cantidad de paneles requeridos',
+      },
+      print: 'Imprimir o Guardar como PDF',
+      extra: {
+        title: 'Observaciones',
+        text: 'Esta cotización es una estimación basada en los datos proporcionados por el cliente. Puede variar según las condiciones reales del sitio, el clima y la eficiencia del sistema instalado.',
+        contactTitle: 'Información de contacto',
+        thanksTitle: 'Gracias por confiar en nosotros 🌞',
+        thanksText:
+          'Nuestro equipo se pondrá en contacto contigo para resolver cualquier duda y ofrecerte la mejor solución energética a medida.',
+      },
+    },
   },
 };
 

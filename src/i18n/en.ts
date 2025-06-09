@@ -292,44 +292,44 @@ const en = {
     subtitle: 'Everything you need to know before making a smart decision',
     questions: [
       {
-        question: 'What maintenance do solar systems require?',
+        question: 'What type of maintenance do solar systems require?',
         answer:
-          'Solar photovoltaic systems require very little maintenance. We recommend cleaning the panels every 6 months to prevent dust or debris buildup, which can reduce efficiency. Additionally, we conduct annual inspections to check the inverter, structure, connections, and overall system to ensure optimal performance and safety.',
+          'Photovoltaic solar systems require minimal maintenance. We recommend semi-annual cleaning of the panels to prevent dust or debris buildup that can reduce efficiency. Additionally, we perform annual inspections to check the condition of the inverter, connections, structure, and other components, ensuring optimal performance and system safety.',
       },
       {
-        question: 'How much money can I really save?',
+        question: 'How much can I save with solar energy?',
         answer:
-          'Savings depend on your current electricity usage, location, and system size. However, most of our clients reduce their electricity bills by 50% to 90%. In many cases, the investment pays for itself in 3 to 5 years and continues to generate positive returns for over 20 years. It also protects you from rising utility rates.',
+          'Savings depend on your current energy consumption, location, and type of installation. However, our clients typically reduce their electricity bills by 80% to 100%. In many cases, the investment is recovered within 3 to 5 years, ensuring savings for the next 20 years—the estimated useful life of photovoltaic modules. Plus, you protect your budget against constant electricity rate increases.',
       },
       {
-        question: 'Are there legal or financial benefits?',
+        question: 'What legal and financial benefits do I get?',
         answer:
-          'Yes. In Colombia, installing a solar system gives you access to multiple incentives: up to 50% income tax deduction over 5 years, VAT exemption on solar equipment, accelerated depreciation, and priority in environmental licensing. You may also generate income by selling excess energy back to the grid (Net Metering).',
+          'In Colombia, installing solar systems gives you access to incentives such as: deduction of up to 50% of the investment value on income tax over 5 years, VAT exemption on system components, accelerated depreciation of assets, and priority in environmental procedures. You can also generate income by selling surplus energy to the grid (Net Metering).',
       },
       {
-        question: 'Do solar panels work on cloudy days or at night?',
+        question: 'Does the solar system work when it’s cloudy or at night?',
         answer:
-          'Yes. Although performance is lower on cloudy days, panels still generate energy thanks to diffused sunlight. For uninterrupted power, we offer hybrid systems with batteries or grid-tied configurations, ensuring consistent energy even at night or in less sunny climates.',
+          'Yes. Although efficiency decreases on cloudy days, panels still generate energy thanks to diffused radiation. To ensure continuous supply, you can install a hybrid system with batteries or grid connection (interconnected system), which provides energy even at night or in variable climates.',
       },
       {
-        question: 'What is the lifespan of a solar system?',
+        question: 'What is the lifespan of solar panels?',
         answer:
-          'Solar panels typically last 25 to 30 years. Inverters usually last 10 to 15 years. We use only certified TIER 1 equipment to ensure long-term high performance. All systems include full warranty and technical support.',
+          'Solar panels have an estimated lifespan of 25 to 30 years. Inverters last between 10 and 15 years. We use TIER 1 certified equipment that maintains high efficiency for decades. In addition, all our systems come with warranty and technical support.',
       },
       {
         question: 'Can I monitor my solar system in real time?',
         answer:
-          'Absolutely. All our systems include real-time monitoring via mobile or desktop, so you can see how much energy you’re producing, consuming, and saving — giving you full control over your solar power.',
+          'Yes. All our systems include online monitoring from your cellphone or computer. You can see in real time how much you’re generating, how much you’re consuming, and your accumulated savings—giving you full control of your energy through a PV Solar System (SSFV).',
       },
       {
-        question: 'What happens if I move or sell my property?',
+        question: 'What happens if I move or sell my house?',
         answer:
-          'Your solar system adds value to your property. If you decide to move, you can include the system in the sale or contact us to explore relocation options.',
+          'The system can increase the commercial value of your property. If you decide to move, you can negotiate the system as part of the sale value or consult us for options to transfer it to your new home.',
       },
       {
         question: 'How long does the full installation take?',
         answer:
-          'From design to activation, the process typically takes 5 to 15 business days depending on the project size. At VOLT Solar Energy, we handle every step: assessment, design, legal registration, installation, and post-installation monitoring.',
+          'Between 5 and 20 business days for residential systems. For commercial or industrial systems, the time varies depending on the capacity to be installed. This includes legalization, registration procedures with UPME, installation, monitoring, and maintenance of the PV Solar System.',
       },
     ],
   },
@@ -442,6 +442,55 @@ const en = {
         text: 'This policy is effective from its publication and may be modified without prior notice. Updates will be published on this page.',
       },
     ],
+  },
+
+  // 🔽 Sección Calculadora
+  calculator: {
+    title: 'Smart Solar Calculator',
+    subtitle: 'Estimate your usage, power and required panels',
+    form: {
+      client: 'Client name',
+      email: 'Client email',
+      location: 'Location',
+      quotedBy: 'Quoted by',
+      provider: 'Energy provider',
+      months: [
+        'Month 1 (kWh)',
+        'Month 2 (kWh)',
+        'Month 3 (kWh)',
+        'Month 4 (kWh)',
+        'Month 5 (kWh)',
+        'Month 6 (kWh)',
+      ],
+      secondAccount: 'Need a second account?',
+      secondConsumption: 'Additional consumption to apply (kWh)',
+      efficiency: 'System efficiency (0.8 = 80%)',
+      sunHours: 'Sun hours per day',
+      panelPower: 'Panel power (W)',
+      results: {
+        title: 'Calculation results',
+        avgUsage: 'Average monthly usage',
+        requiredPanels: 'Required panels',
+        totalPower: 'Total installed power',
+      },
+      summary: {
+        title: 'Quotation Summary',
+        client: 'Client',
+        location: 'Location',
+        avg: 'Average monthly usage',
+        power: 'Installed power',
+        panels: 'Required panel count',
+      },
+      print: 'Print or Save as PDF',
+      extra: {
+        title: 'Notes',
+        text: 'This quote is an estimate based on data provided by the customer. Actual results may vary depending on site conditions, weather, and system efficiency.',
+        contactTitle: 'Contact Information',
+        thanksTitle: 'Thank you for trusting us 🌞',
+        thanksText:
+          'Our team will contact you to answer any questions and offer the best custom solar solution.',
+      },
+    },
   },
 };
 

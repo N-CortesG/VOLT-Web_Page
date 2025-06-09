@@ -1,0 +1,248 @@
+---
+import { getTranslation } from '@i18n/index';
+
+const lang = Astro.params.lang;
+const currentLang = lang === 'es' || lang === 'en' ? lang : 'es';
+const t = getTranslation(currentLang);
+---
+
+<section class="bg-background-secondary dark:bg-dark-secondary rounded-xl px-10">
+  <div class="max-w-2xl mx-auto text-center space-y-4 mb-10">
+    <h2
+      class="text-3xl md:text-4xl font-extrabold text-text-primary dark:text-dark-text-primary leading-tight"
+    >
+      {t.calculator.title}
+    </h2>
+    <p class="text-green-dark dark:text-green-light font-semibold">{t.calculator.subtitle}</p>
+  </div>
+
+  <form id="contact-form" class="max-w-xl mx-auto space-y-6 text-left">
+    <div class="flex flex-col md:flex-row gap-4">
+      <input
+        type="text"
+        name="client"
+        required
+        placeholder={t.calculator.form.client}
+        class="form-input flex-1"
+        pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"
+        title="Solo se permiten letras y espacios"
+        autocomplete="name"
+      />
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder={t.calculator.form.email}
+        class="form-input flex-1"
+        autocomplete="email"
+      />
+    </div>
+
+    <input
+      type="text"
+      name="location"
+      required
+      placeholder={t.calculator.form.location}
+      class="form-input"
+      autocomplete="address-level1"
+    />
+    <input
+      type="text"
+      name="quotedBy"
+      required
+      placeholder={t.calculator.form.quotedBy}
+      class="form-input"
+      pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"
+      title="Solo se permiten letras y espacios"
+    />
+    <input
+      type="text"
+      name="provider"
+      required
+      placeholder={t.calculator.form.provider}
+      class="form-input"
+      pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"
+      title="Solo se permiten letras y espacios"
+    />
+
+    <div class="grid grid-cols-2 gap-4">
+      {
+        t.calculator.form.months.map((label, i) => (
+          <input
+            type="number"
+            name={`kwh_${i + 1}`}
+            required
+            placeholder={label}
+            class="form-input consumption"
+            oninput="calculatePower()"
+            min="0"
+          />
+        ))
+      }
+    </div>
+
+    <label class="flex items-center gap-2 mt-4">
+      <input
+        type="checkbox"
+        name="secondAccount"
+        id="secondAccountCheckbox"
+        class="accent-yellow-light dark:accent-dark-yellow-light"
+        onchange="toggleSecondAccount()"
+      />
+      {t.calculator.form.secondAccount}
+    </label>
+
+    <input
+      type="number"
+      name="secondConsumption"
+      id="secondConsumption"
+      placeholder={t.calculator.form.secondConsumption}
+      class="form-input hidden"
+      oninput="calculatePower()"
+      min="0"
+    />
+
+    <input
+      type="number"
+      name="efficiency"
+      step="0.01"
+      min="0"
+      max="1"
+      placeholder={t.calculator.form.efficiency}
+      class="form-input"
+      oninput="calculatePower()"
+    />
+    <input
+      type="number"
+      name="sunHours"
+      step="0.1"
+      min="0"
+      placeholder={t.calculator.form.sunHours}
+      class="form-input"
+      oninput="calculatePower()"
+    />
+    <input
+      type="number"
+      name="panelPower"
+      step="1"
+      min="1"
+      placeholder={t.calculator.form.panelPower}
+      class="form-input"
+      oninput="calculatePower()"
+    />
+
+    <div id="results" class="hidden bg-background dark:bg-dark-background p-4 rounded-lg mt-4">
+      <p><strong>{t.calculator.form.summary.avg}</strong> <span id="avg"></span> kWh</p>
+      <p><strong>{t.calculator.form.summary.panels}</strong> <span id="panels"></span></p>
+      <p><strong>{t.calculator.form.summary.power}</strong> <span id="power"></span> kW</p>
+    </div>
+
+    <div id="summary" class="print:block mt-6 bg-background text-black p-6 rounded-lg shadow-lg">
+      <h3 class="text-2xl font-bold mb-4">{t.calculator.form.summary.title}</h3>
+      <p><strong>{t.calculator.form.summary.client}:</strong> <span id="summary-client"></span></p>
+      <p>
+        <strong>{t.calculator.form.summary.location}:</strong>
+        <span id="summary-location"></span>
+      </p>
+      <p><strong>{t.calculator.form.summary.avg}:</strong> <span id="summary-avg"></span> kWh</p>
+      <p><strong>{t.calculator.form.summary.power}:</strong> <span id="summary-power"></span> kW</p>
+      <p><strong>{t.calculator.form.summary.panels}:</strong> <span id="summary-panels"></span></p>
+    </div>
+
+    <div class="flex justify-center gap-4 mt-6">
+      <button type="button" class="btn-primary" onclick="window.print()">
+        {t.calculator.form.print}
+      </button>
+    </div>
+  </form>
+</section>
+
+<style>
+  .form-input {
+    @apply w-full px-4 py-3 rounded-md border border-line dark:border-dark-line bg-background dark:bg-dark-background text-text-primary dark:text-dark-text-primary focus:outline-none focus:ring-2 focus:ring-yellow-light dark:focus:ring-dark-yellow-light;
+  }
+
+  .btn-primary {
+    @apply bg-green-dark hover:bg-green-light dark:bg-dark-green-light dark:hover:bg-dark-green-dark text-white font-semibold px-6 py-3 rounded-md transition-colors;
+  }
+
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+
+    #summary,
+    #summary * {
+      visibility: visible;
+    }
+
+    #summary {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .btn-primary {
+      display: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  function getInputValue(name) {
+    const val = document.querySelector(`input[name="${name}"]`)?.value || '';
+    return parseFloat(val) || 0;
+  }
+
+  function updateSummary(client, location, avg, totalPower, panelCount) {
+    document.getElementById('summary').classList.remove('hidden');
+    document.getElementById('summary-client').textContent = client || '-';
+    document.getElementById('summary-location').textContent = location || '-';
+    document.getElementById('summary-avg').textContent = avg.toFixed(2);
+    document.getElementById('summary-power').textContent = totalPower.toFixed(2);
+    document.getElementById('summary-panels').textContent = panelCount.toFixed(2);
+  }
+
+  window.toggleSecondAccount = function () {
+    const checkbox = document.getElementById('secondAccountCheckbox');
+    const field = document.getElementById('secondConsumption');
+    field.classList.toggle('hidden', !checkbox.checked);
+    if (!checkbox.checked) field.value = '';
+    calculatePower();
+  };
+
+  window.calculatePower = function () {
+    const primaryInputs = document.querySelectorAll('.consumption');
+    const extraConsumption = getInputValue('secondConsumption');
+
+    const values = Array.from(primaryInputs).map((input) => {
+      const base = parseFloat(input.value) || 0;
+      return base + extraConsumption;
+    });
+
+    const avg = values.reduce((a, b) => a + b, 0) / values.length;
+
+    const efficiency = getInputValue('efficiency') || 0.8;
+    const sunHours = getInputValue('sunHours') || 4.5;
+    const panelPowerWatts = getInputValue('panelPower') || 500;
+    if (panelPowerWatts === 0) return;
+
+    const panelPowerKW = panelPowerWatts / 1000;
+    const dailyConsumption = avg / 30;
+    const adjustedDailyConsumption = dailyConsumption / efficiency;
+    const totalPower = adjustedDailyConsumption / sunHours;
+    const panelCount = totalPower / panelPowerKW;
+
+    if (!isNaN(avg) && avg > 0) {
+      document.getElementById('results').classList.remove('hidden');
+      document.getElementById('avg').textContent = avg.toFixed(2);
+      document.getElementById('panels').textContent = panelCount.toFixed(2);
+      document.getElementById('power').textContent = totalPower.toFixed(2);
+    }
+
+    const client = document.querySelector('input[name="client"]')?.value;
+    const location = document.querySelector('input[name="location"]')?.value;
+    updateSummary(client, location, avg, totalPower, panelCount);
+  };
+</script>
